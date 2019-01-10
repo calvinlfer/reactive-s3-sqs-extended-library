@@ -9,7 +9,8 @@ This library provides flows for publishing consuming messages that exceed the 25
   * `largeMessageStorageSupport`: Checks whether message is large and persists it in S3 and created a pointer in the SQS message
 * __Consuming__
   * `largeMessageRetrievalSupport`: Checks whether the SQS message is an S3 pointer and retrieves it
-  * `enrichMessageContent`: Used for acknowledging large messages and removing them from S3 (called before deleting)
+  * `enrichMessageContent`: Used for acknowledging large messages and removing them from S3 (this is optional and is 
+     used when the downstream wants to know about message metadata)
   * `largeMessageAckSupport`: removes the big message from S3
 
 Here's an example of how to achieve at-least-once-delivery semantics with very large messages:
